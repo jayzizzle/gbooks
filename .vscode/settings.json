@@ -4,5 +4,7 @@
   "eslint.alwaysShowStatus": true,
   "files.autoSave": "onFocusChange",
   "prettier.semi": false,
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": null
 }
