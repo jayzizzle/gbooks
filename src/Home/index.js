@@ -4,7 +4,7 @@ import { Rows, Row } from '../common'
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   return (
-    <Rows css="background: red;">
+    <Rows css="background: red; padding: 8px;">
       <Row>Search for your next read.</Row>
       <Row>
         <input

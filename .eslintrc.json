@@ -23,6 +23,12 @@
         "SwitchCase": 1
       }],
     "linebreak-style": ["error", "unix"],
+    "max-len": [
+      "error",
+      {
+        "code": 80
+      }
+    ],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "no-unused-vars": [

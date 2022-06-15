@@ -1,5 +1,18 @@
 import styled from 'styled-components'
 
+const StyledDiv = styled.div`
+  color: ${props => props.color || 'inherit'};
+  ${props => fontSize(props.size || 2)};
+  ${props => props.css || ''};
+`
+
+const StyledLabel = styled.div`
+  font-family: Roboto Condensed;
+  font-weight: ${props => props.fontWeight || 700};
+  ${props => fontSize(props.size || 2)};
+  ${props => props.css || ''};
+`
+
 export const fontSize = n => {
   switch (n) {
     case 1:
@@ -17,15 +30,14 @@ export const fontSize = n => {
   }
 }
 
-export const Div = styled.div`
-  color: ${props => props.color || 'inherit'};
-  ${props => fontSize(props.size || 2)};
-  ${props => props.css || ''};
-`
+export const Div = ({ color, size, css, children }) => (
+  <StyledDiv color={color} size={size} css={css}>
+    {children}
+  </StyledDiv>
+)
 
-export const Label = styled.div`
-  font-family: Roboto Condensed;
-  font-weight: ${props => props.fontWeight || 700};
-  ${props => fontSize(props.size || 2)};
-  ${props => props.css || ''};
-`
+export const Label = ({ fontWeight, size, css, children }) => (
+  <StyledLabel fontWeight={fontWeight} size={size} css={css}>
+    {children}
+  </StyledLabel>
+)
