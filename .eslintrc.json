@@ -31,18 +31,13 @@
     ],
     "no-multi-spaces": ["error"],
     "comma-dangle": [
-      "error",
-      {
-        "arrays": "never",
-        "objects": "always",
-        "imports": "never",
-        "exports": "never",
-        "functions": "never"
-      }
+      1,
+      "always-multiline"
     ],
     "no-multiple-empty-lines": "error",
     "arrow-parens": ["error", "as-needed"],
     "object-curly-spacing": ["error", "always"],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0
   }
 }

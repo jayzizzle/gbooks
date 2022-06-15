@@ -1,21 +1,11 @@
 import React from 'react'
-import { Rows, Row, Div, Label } from './common'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Home'
 
-function App() {
-  return (
-    <>
-      <Label size={5}>gBooks</Label>
-      <Label size={2}>Powered By Google</Label>
-      <Rows>
-        <Row height={50} css="text-transform: uppercase;">
-          Emily St. John Mandel
-        </Row>
-        <Row>Sally Rooney</Row>
-      </Rows>
-      <Div size={3}>Jon Zamora</Div>
-      <Div size={1}>Summer 2022</Div>
-    </>
-  )
-}
+const App = () => (
+  <Routes>
+    <Route exact path="/" element={<Home />} />
+  </Routes>
+)
 
 export default App
