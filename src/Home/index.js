@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
-import { Rows, Row } from '../common'
+import { Rows, Row, Div, Label, color } from '../common'
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   return (
-    <Rows css="background: red; padding: 8px;">
-      <Row>Search for your next read.</Row>
+    <Rows css="padding: 8px;">
+      <Row>
+        <Label size={5} color={color.orange}>
+          Welcome to OnRead
+        </Label>
+      </Row>
+      <Row>
+        <Div>Search for your next book.</Div>
+      </Row>
       <Row>
         <input
           type="text"
