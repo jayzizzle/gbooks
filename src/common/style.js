@@ -16,6 +16,9 @@ const StyledLabel = styled.div`
 
 export const color = {
   orange: '#FEB062',
+  teal: '#8CBEAA',
+  maroon: '#BE7575',
+  seafoam: '#C2E8CE',
 }
 
 export const fontSize = n => {
