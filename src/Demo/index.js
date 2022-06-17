@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Panels, Panel, Rows, Row, Div, Label, color } from '../common'
+import { Panels, Panel, Rows, Row, Label } from '../common'
 
 const myFetchHero = new Promise(res => {
   const myData = [
@@ -14,6 +14,10 @@ const myFetchHero = new Promise(res => {
     {
       name: 'Miles',
       todos: ['Save Brooklyn.', 'Hide from my parents.', 'Finish Homework.'],
+    },
+    {
+      name: 'Venom',
+      todos: ['Find Spider-Man.', 'Defeat Carnage.'],
     },
   ]
   setTimeout(() => {
@@ -37,47 +41,75 @@ const myFetchVillain = new Promise(res => {
   }, 100)
 })
 
-const List = ({ name, todos }) => {
-  const [list, setList] = useState(todos)
-
-  const handleDelete = idx => {
-    const temp = list
-    const newList = temp.splice(idx, 1)
-    setList([newList])
-  }
-
+const List = ({ owner, todos, handleAdd, handleDelete }) => {
+  const [text, setText] = useState('')
   return (
     <>
-      <Label color={color.orange}>{name}</Label>
+      <Label>{owner}</Label>
       <ul>
-        {list.map((todo, i) => (
+        {todos.map((todo, i) => (
           <li key={i}>
-            {todo}
-            <button onClick={() => handleDelete(i)}>Delete</button>
+            {todo}{' '}
+            <button onClick={() => handleDelete(owner, i)}>Delete</button>
           </li>
         ))}
       </ul>
+      <form>
+        <input
+          placeholder={`Add task for ${owner}`}
+          value={text}
+          onChange={e => setText(e.target.value)}
+        />
+        <button
+          onClick={e => {
+            e.preventDefault()
+            handleAdd(owner, text)
+            setText('')
+          }}
+        >
+          Submit
+        </button>
+      </form>
     </>
   )
 }
 
 const Demo = () => {
-  const [toDos, setToDos] = useState(null)
+  const [data, setData] = useState(null)
+
+  const handleAdd = (owner, todo) => {
+    const copyData = { ...data }
+    copyData[owner].todos.push(todo)
+    setData(copyData)
+  }
+
+  const handleDelete = (owner, idx) => {
+    const copyData = { ...data }
+    copyData[owner].todos.splice(idx, 1)
+    setData(copyData)
+  }
 
   useEffect(() => {
     Promise.all([myFetchHero, myFetchVillain]).then(res => {
-      const data = []
-      for (let i = 0; i < res.length; i++) {
-        const subData = res[i]
-        for (let j = 0; j < subData.length; j++) {
-          data.push(subData[j])
+      const lists = res.flat()
+      const result = {}
+      for (let i = 0; i < lists.length; i++) {
+        const list = lists[i]
+        if (!result[list.name]) {
+          result[list.name] = list
+        } else {
+          for (let j = 0; j < list.todos.length; j++) {
+            const items = result[list.name].todos
+            const item = list.todos[j]
+            if (!items.includes(item)) items.push(item)
+          }
         }
       }
-      setToDos(data)
+      setData(result)
     })
   }, [])
 
-  if (!toDos) return null
+  if (!data) return null
 
   return (
     <Panels vertical autoSize>
@@ -87,10 +119,14 @@ const Demo = () => {
             <Label>To Do List</Label>
           </Row>
           <Row>
-            {toDos.map(data => (
-              <Div key={data.name} css="padding-top: 16px;">
-                <List name={data.name} todos={data.todos} />
-              </Div>
+            {Object.values(data).map(list => (
+              <List
+                key={list.name}
+                owner={list.name}
+                todos={list.todos}
+                handleAdd={handleAdd}
+                handleDelete={handleDelete}
+              />
             ))}
           </Row>
         </Rows>
