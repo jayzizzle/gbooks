@@ -19,6 +19,11 @@ export const color = {
   teal: '#8CBEAA',
   maroon: '#BE7575',
   seafoam: '#C2E8CE',
+  dark: '#1A1A1A',
+  muted: '#222',
+  base: '#333',
+  baseText: '#EEE',
+  highlighted: '#444',
 }
 
 export const fontSize = n => {

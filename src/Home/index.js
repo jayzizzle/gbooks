@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Panels, Panel, Rows, Row, Div, Label, color } from '../common'
+import { Panels, Panel, Rows, Row, Div, Label, Input, color } from '../common'
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState('')
+  // eslint-disable-next-line no-unused-vars
+  const [query, setQuery] = useState('')
+
   return (
     <Panels vertical autoSize>
       <Panel dark>Dark</Panel>
@@ -21,10 +23,10 @@ const Home = () => {
             <Div>Search for your next favorite book.</Div>
           </Row>
           <Row>
-            <input
+            <Input
               placeholder="Station Eleven"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              value={query}
+              onChange={e => setQuery(e.target.value)}
             />
           </Row>
         </Rows>

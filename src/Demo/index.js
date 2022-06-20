@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Panels, Panel, Rows, Row, Label } from '../common'
+import { Panels, Panel, Rows, Row, Label, color } from '../common'
+
+const myFetch = () => {
+  return myFetchHero
+}
 
 const myFetchHero = new Promise(res => {
   const myData = [
@@ -45,7 +49,9 @@ const List = ({ owner, todos, handleAdd, handleDelete }) => {
   const [text, setText] = useState('')
   return (
     <>
-      <Label>{owner}</Label>
+      <Label size={5} css="padding-top: 16px;" color={color.orange}>
+        {owner}
+      </Label>
       <ul>
         {todos.map((todo, i) => (
           <li key={i}>
@@ -114,7 +120,7 @@ const Demo = () => {
   // }, [])
 
   useEffect(() => {
-    Promise.all([myFetchHero, myFetchVillain]).then(res => {
+    Promise.all([myFetch(), myFetchVillain]).then(res => {
       const lists = res.flat()
       const result = {}
       for (let i = 0; i < lists.length; i++) {
