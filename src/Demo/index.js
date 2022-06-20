@@ -89,6 +89,30 @@ const Demo = () => {
     setData(copyData)
   }
 
+  // useEffect(() => {
+  //   Promise.all([myFetchHero, myFetchVillain]).then(res => {
+  //     const lists = res.flat()
+  //     const result = {}
+  //     for (let i = 0; i < lists.length; i++) {
+  //       const list = lists[i]
+  //       if (!result[list.name]) {
+  //         result[list.name] = list
+  //       } else {
+  //         for (let j = 0; j < list.todos.length; j++) {
+  //           const items = result[list.name].todos
+  //           const item = list.todos[j]
+  //           if (!items.includes(item)) items.push(item)
+  //         }
+  //       }
+  //     }
+  //     setData(result)
+  //   })
+  // }, [])
+
+  // useEffect(() => {
+  //   myFetchHero.then(res => console.log(res))
+  // }, [])
+
   useEffect(() => {
     Promise.all([myFetchHero, myFetchVillain]).then(res => {
       const lists = res.flat()
@@ -116,7 +140,7 @@ const Demo = () => {
       <Panel>
         <Rows>
           <Row>
-            <Label>To Do List</Label>
+            <Label>To Do Lists</Label>
           </Row>
           <Row>
             {Object.values(data).map(list => (
