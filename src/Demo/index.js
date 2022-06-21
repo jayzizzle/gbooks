@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Panels, Panel, Rows, Row, Label, color } from '../common'
 
-const myFetch = () => {
-  return myFetchHero
-}
-
 const myFetchHero = new Promise(res => {
   const myData = [
     {
@@ -44,6 +40,10 @@ const myFetchVillain = new Promise(res => {
     res(myData)
   }, 100)
 })
+
+const myFetch = () => {
+  return myFetchHero
+}
 
 const List = ({ owner, todos, handleAdd, handleDelete }) => {
   const [text, setText] = useState('')

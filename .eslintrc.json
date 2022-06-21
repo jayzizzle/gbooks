@@ -45,9 +45,6 @@
     "object-curly-spacing": ["error", "always"],
     "prefer-const": "error",
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": 0,
-    "@typescript-eslint/comma-dangle": [
-      "error", "always-multiline"
-    ]
+    "react/prop-types": 0
   }
 }
