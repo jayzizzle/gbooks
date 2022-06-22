@@ -166,3 +166,25 @@ const Demo = () => {
 }
 
 export default Demo
+
+// var removeNthFromEnd = function (head, n) {
+//   let current = head
+//   let counter = 0
+//   let pointer = null
+//   let prevPointer = null
+//   while (current !== null) {
+//     if (counter === n) {
+//       pointer = head
+//     }
+
+//     if (pointer !== null) {
+//       prevPointer = pointer
+//       pointer = pointer.next
+//     }
+//     counter++
+//     current = current.next
+//   }
+//   if (pointer === null) return head.next
+//   prevPointer.next = pointer.next
+//   return head
+// }
